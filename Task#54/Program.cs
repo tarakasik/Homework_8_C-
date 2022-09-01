@@ -9,14 +9,13 @@
 // 8 4 4 2
 
 Console.Clear();
-int rows = InputNumbers("Введите m: ");
-int columns = InputNumbers("Введите n: ");
+int rows = InputNumbers("Input number rows: ");
+int columns = InputNumbers("Input number columns: ");
 Random rand = new Random();
 int[,] array = new int[rows, columns];
 FillArray(array);
 PrintArray(array);
-
-Console.WriteLine($"\nSorted array lines: ");
+Console.WriteLine($"\nSorting array rows in descending order: ");
 SortArrayLines(array);
 PrintArray(array);
 
