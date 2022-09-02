@@ -1,65 +1,39 @@
 ﻿Console.Clear();
-int[,] firstMatrix = new int[2, 3];
-int[,] secondMatrix = new int[3, 4];
+
 Random rand = new Random();
-FillArray(firstMatrix);
-PrintArray(firstMatrix);
-Console.WriteLine();
-FillArray2(secondMatrix);
-PrintArray2(secondMatrix);
 
-
-
-void FillArray(int[,] firstMatrix)
+int[,] firstMatrix = new int[2, 2];
+for (int i = 0; i < firstMatrix.GetLength(0); i++)
 {
-    for (int i = 0; i < firstMatrix.GetLength(0); i++)
+    for (int j = 0; j < firstMatrix.GetLength(1); j++)
     {
-        for (int j = 0; j < firstMatrix.GetLength(1); j++)
-        {
-            firstMatrix[i, j] = rand.Next(1, 9);
-        }
+        firstMatrix[i, j] = rand.Next(1, 9);
+        Console.Write($"{firstMatrix[i, j]}\t");
     }
+    Console.WriteLine();
 }
-void PrintArray(int[,] firstMatrix)
+Console.WriteLine("Second array: ");
+int[,] secondMatrix = new int[3, 4];
+for (int i = 0; i < secondMatrix.GetLength(0); i++)
 {
-    for (int i = 0; i < firstMatrix.GetLength(0); i++)
+    for (int j = 0; j < secondMatrix.GetLength(1); j++)
     {
-        for (int j = 0; j < firstMatrix.GetLength(1); j++)
-        {
-            Console.Write("{0}\t", firstMatrix[i, j]);
-        }
-        Console.WriteLine();
+        secondMatrix[i, j] = rand.Next(1, 9);
+        Console.Write($"{secondMatrix[i, j]}\t");
     }
+    Console.WriteLine();
 }
-void FillArray2(int[,] secondMatrix)
+Console.WriteLine("Multiplication array: ");
+int[,] thirdMatrix = new int[2,2];
+for (int i = 0; i < firstMatrix.GetLength(0); i++)
 {
-    for (int k = 0; k < secondMatrix.GetLength(0); k++)
+    for (int j = 0; j < secondMatrix.GetLength(1); j++)
     {
-        for (int l = 0; l < secondMatrix.GetLength(1); l++)
+        for (int k = 0; k < secondMatrix.GetLength(0); k++)
         {
-            secondMatrix[k, l] = rand.Next(1, 9);
+            thirdMatrix[i, j] += firstMatrix[i, k] * secondMatrix[k, j];
         }
+        Console.Write($"{thirdMatrix[i, j]}\t");
     }
+    Console.WriteLine();
 }
-
-void PrintArray2(int[,] secondMatrix)
-{
-
-    for (int k = 0; k < secondMatrix.GetLength(0); k++)
-    {
-        for (int l = 0; l < secondMatrix.GetLength(1); l++)
-        {
-            Console.Write("{0}\t", secondMatrix[k, l]);// "{0}\n", secondMatrix[i, j]);
-        }
-        Console.WriteLine();
-
-    }
-}
-
-//                 {
-//                     Console.Write("{0}\t", firstMatrix[i, j], "{0}\n", secondMatrix[i, j]);
-//                 }
-//             }
-//         }
-//     }
-// }
