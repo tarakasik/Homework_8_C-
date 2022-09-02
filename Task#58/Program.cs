@@ -1,7 +1,10 @@
-﻿Console.Clear();
+﻿// Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
+// Например, даны 2 матрицы:
+
+Console.Clear();
 
 Random rand = new Random();
-int[,] matrix1 = new int[3, 4];
+int[,] matrix1 = new int[3, 3];
 for (int i = 0; i < matrix1.GetLength(0); i++)
 {
     for (int j = 0; j < matrix1.GetLength(1); j++)
@@ -10,7 +13,7 @@ for (int i = 0; i < matrix1.GetLength(0); i++)
     }
 }
 
-int[,] matrix2 = new int[4, 3];
+int[,] matrix2 = new int[3, 3];
 for (int i = 0; i < matrix2.GetLength(0); i++)
 {
     for (int j = 0; j < matrix2.GetLength(1); j++)
@@ -30,7 +33,6 @@ Print(multi);
 
 int[,] Multiplication(int[,] a, int[,] b)
 {
-    // if (a.GetLength(1) != b.GetLength(0)) throw new Exception("Матрицы нельзя перемножить");
     int[,] r = new int[a.GetLength(0), b.GetLength(1)];
     for (int i = 0; i < a.GetLength(0); i++)
     {
