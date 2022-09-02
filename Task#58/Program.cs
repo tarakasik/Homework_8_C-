@@ -1,39 +1,57 @@
 ﻿Console.Clear();
 
 Random rand = new Random();
+int[,] matrix1 = new int[3, 4];
+for (int i = 0; i < matrix1.GetLength(0); i++)
+{
+    for (int j = 0; j < matrix1.GetLength(1); j++)
+    {
+        matrix1[i, j] = rand.Next(1, 9);
+    }
+}
 
-int[,] firstMatrix = new int[2, 2];
-for (int i = 0; i < firstMatrix.GetLength(0); i++)
+int[,] matrix2 = new int[4, 3];
+for (int i = 0; i < matrix2.GetLength(0); i++)
 {
-    for (int j = 0; j < firstMatrix.GetLength(1); j++)
+    for (int j = 0; j < matrix2.GetLength(1); j++)
     {
-        firstMatrix[i, j] = rand.Next(1, 9);
-        Console.Write($"{firstMatrix[i, j]}\t");
+        matrix2[i, j] = rand.Next(1, 9);
     }
-    Console.WriteLine();
 }
-Console.WriteLine("Second array: ");
-int[,] secondMatrix = new int[3, 4];
-for (int i = 0; i < secondMatrix.GetLength(0); i++)
+
+Console.WriteLine("\nMatrix 1:");
+Print(matrix1);
+Console.WriteLine("\nMatrix 2:");
+Print(matrix2);
+Console.WriteLine("\nMatrix 3 = Matrix 1 * Matrix 2:");
+int[,] multi = Multiplication(matrix1, matrix2);
+Print(multi);
+
+
+int[,] Multiplication(int[,] a, int[,] b)
 {
-    for (int j = 0; j < secondMatrix.GetLength(1); j++)
+    // if (a.GetLength(1) != b.GetLength(0)) throw new Exception("Матрицы нельзя перемножить");
+    int[,] r = new int[a.GetLength(0), b.GetLength(1)];
+    for (int i = 0; i < a.GetLength(0); i++)
     {
-        secondMatrix[i, j] = rand.Next(1, 9);
-        Console.Write($"{secondMatrix[i, j]}\t");
-    }
-    Console.WriteLine();
-}
-Console.WriteLine("Multiplication array: ");
-int[,] thirdMatrix = new int[2,2];
-for (int i = 0; i < firstMatrix.GetLength(0); i++)
-{
-    for (int j = 0; j < secondMatrix.GetLength(1); j++)
-    {
-        for (int k = 0; k < secondMatrix.GetLength(0); k++)
+        for (int j = 0; j < b.GetLength(1); j++)
         {
-            thirdMatrix[i, j] += firstMatrix[i, k] * secondMatrix[k, j];
+            for (int k = 0; k < b.GetLength(0); k++)
+            {
+                r[i, j] += a[i, k] * b[k, j];
+            }
         }
-        Console.Write($"{thirdMatrix[i, j]}\t");
     }
-    Console.WriteLine();
+    return r;
+}
+void Print(int[,] a)
+{
+    for (int i = 0; i < a.GetLength(0); i++)
+    {
+        for (int j = 0; j < a.GetLength(1); j++)
+        {
+            Console.Write("{0} ", a[i, j]);
+        }
+        Console.WriteLine();
+    }
 }
