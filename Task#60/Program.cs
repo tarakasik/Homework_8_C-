@@ -4,9 +4,15 @@
 // 34(1,0,0) 41(1,1,0)
 // 27(0,0,1) 90(0,1,1)
 // 26(1,0,1) 55(1,1,1)
+Console.Clear();
 
-int[,,] matrix = new int[2,2,2];
+int rows = 2;
+int columns = 2;
+int thirdElement = 2;
+int count = 0;
+int start = 0;
 Random rand = new Random();
+int[,,] matrix = new int[rows, columns, thirdElement];
 FillArray(matrix);
 PrintArray(matrix);
 
@@ -16,24 +22,30 @@ void FillArray(int[,,] matrix)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            for (int k = 0; k < matrix.GetLength(1); k++)
+            for (int k = 0; k < matrix.GetLength(2); k++)
             {
-            matrix[i, j, k] = rand.Next(1, 9);
+                start = rand.Next(10, 99);
+                matrix[i, j, k] = start + count;
+                count++;
             }
         }
     }
 }
 void PrintArray(int[,,] matrix)
+
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            for (int k = 0; k < matrix.GetLength(1); k++)
+            for (int k = 0; k < matrix.GetLength(2); k++)
             {
-            Console.Write("{0}\t",matrix[i, j, k]);
+                Console.Write($"{matrix[i, j, k]} ({j},{k},{i})\t");
             }
+            Console.WriteLine();
         }
-        Console.WriteLine();
     }
 }
+
+
+
